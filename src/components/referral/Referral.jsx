@@ -39,7 +39,7 @@ const Referral = ({ user, referralLink, setReferralLink, setCurrentUser }) => {
 
   useEffect(() => {
     getShortLink();
-  }, [user, userLink]);
+  }, [userLink]);
 
   useEffect(() => {
     if (copied) {
