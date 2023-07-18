@@ -17,7 +17,9 @@ import { showToast } from "../../utils/showToast";
 const Referral = ({ user, referralLink, setReferralLink, setCurrentUser }) => {
   const [copied, setCopied] = useState(false);
 
-  const userLink = `https://nft-yeild.vercel.app/${user?.walletID}`;
+  const userLink = `https://yield-nft.vercel.app/${user?.walletID}`;
+
+  console.log(userLink);
   const [shortLink, setShortLink] = useState(userLink);
 
   const getShortLink = async () => {
@@ -37,7 +39,7 @@ const Referral = ({ user, referralLink, setReferralLink, setCurrentUser }) => {
 
   useEffect(() => {
     getShortLink();
-  }, []);
+  }, [user, userLink]);
 
   useEffect(() => {
     if (copied) {
