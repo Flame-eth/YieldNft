@@ -17,19 +17,19 @@ import { showToast } from "../../utils/showToast";
 const Referral = ({ user, referralLink, setReferralLink, setCurrentUser }) => {
   const [copied, setCopied] = useState(false);
 
-  const userLink = `https://yield-nft.vercel.app/${user?.walletID}`;
-
-  console.log(userLink);
-  const [shortLink, setShortLink] = useState(userLink);
+  // console.log(userLink);
+  const [shortLink, setShortLink] = useState("");
 
   const getShortLink = async () => {
-    if (referralLink) {
-      setShortLink(referralLink);
-    } else if (userLink) {
+    // if ( referralLink) {
+    //   setShortLink(referralLink);
+    // } else
+    if (user) {
+      const userLink = `https://yield-nft.vercel.app/${user?.walletID}`;
       axios
         .get(`https://api.shrtco.de/v2/shorten?url=${userLink}`)
         .then((res) => {
-          // console.log(res.data.result.full_short_link);
+          console.log(res.data.result.full_short_link);
           setShortLink(res.data.result.full_short_link);
           setReferralLink(res.data.result.full_short_link);
         })
@@ -39,7 +39,7 @@ const Referral = ({ user, referralLink, setReferralLink, setCurrentUser }) => {
 
   useEffect(() => {
     getShortLink();
-  }, [userLink]);
+  }, [user]);
 
   useEffect(() => {
     if (copied) {
@@ -62,7 +62,7 @@ const Referral = ({ user, referralLink, setReferralLink, setCurrentUser }) => {
           <div className="qrcode">
             <QRCodeSVG value={shortLink} />
           </div>
-          <div className="url">{userLink.slice(0, 45) + "..."}</div>
+          <div className="url">{shortLink.slice(0, 45) + "..."}</div>
           <CopyToClipboard text={shortLink} onCopy={() => setCopied(true)}>
             <div className="copy">Copy</div>
           </CopyToClipboard>
