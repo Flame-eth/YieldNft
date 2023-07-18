@@ -1,0 +1,481 @@
+.account {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #0c0c0c 100%, rgba(0, 0, 0, 0) 60%);
+  color: #fff;
+  padding-bottom: 70px;
+  .navbar {
+    background-color: black;
+  }
+
+  .accountCon {
+    width: 100%;
+
+    .header {
+      height: 150px;
+      background: url(../../assets/images/banner2.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      //   object-fit: contain;
+      width: 100%;
+      margin: 0 auto;
+
+      h1 {
+        padding: 0;
+        margin: 0;
+        color: white;
+        margin: 0 auto;
+        width: 100%;
+        // text-align: center;
+        display: flex;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+      }
+    }
+
+    .balance {
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      // background-color: grey;
+      background: hsla(0, 0%, 100%, 0.05);
+      margin: 0 auto;
+      justify-content: center;
+      align-items: center;
+      padding: 50px 0;
+      margin: 50px auto;
+      border-radius: 90px;
+
+      h1 {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        font-family: "Roboto", sans-serif;
+
+        span {
+          img {
+            font-size: 10px;
+          }
+        }
+      }
+
+      p {
+        width: 60%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+        background: hsla(0, 0%, 100%, 0.15);
+        border-radius: 20px;
+        gap: 15px;
+
+        span {
+          color: hsla(0, 0%, 100%, 0.4);
+          font-size: 12px;
+        }
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+
+        input {
+          padding: 10px;
+          margin: 0 auto;
+          width: 60%;
+          border-radius: 10px;
+          border: none;
+          // background: hsla(0, 0%, 100%, 0.15);
+
+          color: #ffa503;
+          font-size: 20px;
+          font-family: "Roboto", sans-serif;
+        }
+
+        button {
+          width: 60%;
+          margin: 0 auto;
+          border-radius: 10px;
+          border: none;
+          // background: hsla(0, 0%, 100%, 0.15);
+          padding: 10px;
+          color: white;
+          font-size: 20px;
+          font-family: "Roboto", sans-serif;
+          background-color: #ffa503;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .stakingRecord {
+      width: 100%;
+
+      h1 {
+        margin: 0;
+        padding: 0;
+        color: white;
+        font-family: "Roboto", sans-serif;
+        font-weight: 700;
+        padding: 50px 0;
+        padding-left: 50px;
+        color: #ffa503;
+        // text-align: center;
+      }
+
+      .stakingRecordCon {
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        // background-color: grey;
+        background: hsla(0, 0%, 100%, 0.05);
+        margin: 0 auto;
+        justify-content: center;
+        // align-items: center;
+        padding: 50px 0;
+        margin: 50px auto;
+        border-radius: 90px;
+        margin-top: 0;
+
+        .section {
+          display: flex;
+          justify-content: space-between;
+          padding: 0 40px;
+          font-size: 14px;
+
+          h2 {
+            color: hsla(0, 0%, 100%, 0.4);
+          }
+          p {
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+
+            img {
+              font-size: 16px;
+              height: 20px;
+            }
+          }
+        }
+      }
+    }
+
+    .pledgingRecord {
+      width: 100%;
+
+      h1 {
+        margin: 0;
+        padding: 0;
+        color: white;
+        font-family: "Roboto", sans-serif;
+        font-weight: 700;
+        padding: 50px 0;
+        padding-left: 50px;
+        color: #ffa503;
+        // text-align: center;
+      }
+
+      .pledgingRecordCon {
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        // background-color: grey;
+        background: hsla(0, 0%, 100%, 0.05);
+        margin: 0 auto;
+        justify-content: center;
+        // align-items: center;
+        padding: 50px 0;
+        margin: 50px auto;
+        border-radius: 90px;
+        margin-top: 0;
+
+        .section {
+          display: flex;
+          justify-content: space-between;
+          padding: 0 40px;
+          font-size: 14px;
+
+          h2 {
+            color: hsla(0, 0%, 100%, 0.4);
+          }
+          p {
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+
+            img {
+              font-size: 16px;
+              height: 20px;
+            }
+          }
+        }
+      }
+    }
+
+    .accountRecord {
+      width: 100%;
+
+      h1 {
+        margin: 0;
+        padding: 0;
+        color: white;
+        font-family: "Roboto", sans-serif;
+        font-weight: 700;
+        padding: 50px 0;
+        padding-left: 50px;
+        color: #ffa503;
+        // text-align: center;
+      }
+
+      .accountRecordCon {
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        // background-color: grey;
+        background: hsla(0, 0%, 100%, 0.05);
+        margin: 0 auto;
+        justify-content: center;
+        // align-items: center;
+        padding: 50px 0;
+        margin: 50px auto;
+        border-radius: 90px;
+        margin-top: 0;
+
+        .section {
+          display: flex;
+          // justify-content: space-between;
+          padding: 0 40px;
+          font-size: 15px;
+
+          .table {
+            width: 100%;
+            border-collapse: collapse;
+
+            th,
+            td {
+              padding: 15px;
+              text-align: center;
+              // border-bottom: 1px solid #ddd;
+            }
+
+            th {
+              // background-color: #f2f2f2;
+              border-bottom: 1px solid #ddd;
+            }
+
+            tr:nth-child(even) {
+              // background-color: #f9f9f9;
+              background-color: hsla(0, 0%, 100%, 0.4);
+              border-radius: 10px;
+            }
+
+            tr:hover {
+              // background-color: #f5f5f5;
+            }
+          }
+        }
+      }
+    }
+
+    .loader {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #000000;
+      opacity: 0.7;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .account {
+    .accountCon {
+      .balance {
+        border-radius: 30px;
+        h1 {
+          font-size: 20px;
+        }
+        p {
+          font-size: 15px;
+        }
+        form {
+          input {
+            width: 60%;
+          }
+          button {
+            width: 60%;
+          }
+        }
+      }
+
+      .stakingRecord {
+        .stakingRecordCon {
+          border-radius: 30px;
+          .section {
+            padding: 0 20px;
+            h2 {
+              font-size: 15px;
+            }
+            p {
+              font-size: 15px;
+            }
+          }
+        }
+      }
+
+      .pledgingRecord {
+        h1 {
+          text-align: center;
+          width: 100%;
+          padding: 20px 0;
+        }
+        .pledgingRecordCon {
+          border-radius: 30px;
+          .section {
+            padding: 0 20px;
+            h2 {
+              font-size: 15px;
+            }
+            p {
+              font-size: 15px;
+            }
+          }
+        }
+      }
+
+      .accountRecord {
+        h1 {
+          text-align: center;
+          width: 100%;
+          padding: 20px 0;
+        }
+        .accountRecordCon {
+          border-radius: 30px;
+          .section {
+            padding: 0 20px;
+            font-size: 13px;
+
+            .table {
+              width: 100%;
+              border-collapse: collapse;
+
+              th,
+              td {
+                padding: 10px;
+              }
+
+              th {
+                // background-color: #f2f2f2;
+              }
+
+              tr:nth-child(even) {
+                // background-color: #f9f9f9;
+                background-color: hsla(0, 0%, 100%, 0.4);
+                border-radius: 10px;
+              }
+
+              tr:hover {
+                // background-color: #f5f5f5;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .account {
+    .accountCon {
+      .balance {
+        border-radius: 30px;
+        h1 {
+          font-size: 20px;
+        }
+        p {
+          font-size: 15px;
+          span {
+            font-size: 11px;
+          }
+        }
+        form {
+          input {
+            width: 60%;
+          }
+          button {
+            width: 60%;
+          }
+        }
+      }
+
+      .stakingRecord {
+        .stakingRecordCon {
+          border-radius: 30px;
+          .section {
+            padding: 0 20px;
+            h2 {
+              font-size: 15px;
+            }
+            p {
+              font-size: 15px;
+            }
+          }
+        }
+      }
+
+      .pledgingRecord {
+        h1 {
+          text-align: center;
+          width: 100%;
+          padding: 20px 0;
+        }
+        .pledgingRecordCon {
+          border-radius: 30px;
+          .section {
+            padding: 0 20px;
+            h2 {
+              font-size: 15px;
+            }
+            p {
+              font-size: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

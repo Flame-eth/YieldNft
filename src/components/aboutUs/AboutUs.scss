@@ -1,0 +1,60 @@
+.about {
+  // position: absolute;
+  background: linear-gradient(90deg, #0c0c0c 100%, rgba(0, 0, 0, 0) 60%);
+  padding: 30px 0;
+  padding-top: 0;
+
+  .aboutContainer {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    // gap: 70px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+
+    // border-bottom: dashed 1px white;
+
+    h1 {
+      color: #ffa503;
+      font-size: 55.905px;
+      font-family: Rubik;
+      font-weight: 600;
+    }
+
+    p {
+      // width: 80%;
+      color: white;
+      font-size: 20px;
+      line-height: 50px;
+      // font-family: Rubik;
+      font-weight: 300;
+      text-justify: auto;
+      text-align: justify;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .about {
+    padding: 10px 0;
+    .aboutContainer {
+   
+      text-align: justify;
+      
+
+
+      h1 {
+    font-size: 35px;
+    margin: 0;
+      }
+
+      p{
+        font-size: 16px;
+        line-height: 25px;
+        // text-align: center;
+      }
+      }
+    }
+  }
+

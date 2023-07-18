@@ -1,0 +1,213 @@
+.footer {
+  width: 100%;
+  background: linear-gradient(90deg, #0c0c0ce4 100%, rgba(0, 0, 0, 0.884) 60%);
+  box-shadow: #ffa503;
+  padding: 80px 0;
+  padding-bottom: 10px;
+  font-family: Rubik, sans-serif;
+  .footerCon {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+
+    .footerTop {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      //   align-items: center;
+      margin-bottom: 20px;
+      width: 100%;
+      margin: 0 auto;
+
+      .title {
+        display: flex;
+        // align-items: center;
+        // justify-content: center;
+        gap: 10px;
+        flex-direction: column;
+
+        h1 {
+          display: flex;
+          align-items: center;
+          // justify-content: center;
+          gap: 10px;
+          img {
+            object-fit: contain;
+            width: 50px;
+            height: 50px;
+          }
+          .navLink {
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 600;
+            color: #ffa503;
+            font-size: 35.576px;
+            font-family: "Rowdies", cursive;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .desc {
+        font-size: 14px;
+        font-weight: 400;
+        color: #fff;
+      }
+
+      .links {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        ul {
+          text-decoration: none;
+          list-style: none;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          //   align-items: center;
+          gap: 20px;
+        }
+
+        .navLink {
+          color: #fff;
+          font-size: 20.964px;
+          font-family: "Rubik", sans-serif;
+          font-weight: 600;
+          transition: all 0.3s ease-in-out;
+          list-style: none;
+          text-decoration: none;
+
+          &:hover {
+            color: #ffa503;
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .icons {
+        display: flex;
+        flex-direction: column;
+        // justify-content: space-between;
+        // align-items: center;
+        gap: 20px;
+
+        h1 {
+          color: #ffa503;
+          font-size: 30px;
+          margin: 0;
+          text-align: start;
+
+          // font-family: "Ravi Prakash", cursive;
+          //   cursor: pointer;
+        }
+        form {
+          display: flex;
+          gap: 10px;
+
+          input {
+            padding: 12px;
+            border-radius: 10px;
+          }
+
+          .btn {
+            cursor: pointer;
+
+            &:hover {
+              background-color: #ffa503;
+              color: #fff;
+            }
+          }
+        }
+
+        .social {
+          display: flex;
+          gap: 20px;
+          margin-top: 20px;
+          .icon {
+            color: #fff;
+            font-size: 20.964px;
+            font-family: "Rubik", sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease-in-out;
+            list-style: none;
+            text-decoration: none;
+            // size: 90px;
+            cursor: pointer;
+
+            &:hover {
+              color: #ffa503;
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+
+    .footerBottom {
+      width: 100%;
+      //   display: flex;
+      color: #fff;
+      margin-top: 30px;
+      margin-bottom: 0;
+      padding-bottom: 0;
+
+      //   justify-content: center;
+      //   align-items: center;
+      h1 {
+        font-size: 14px;
+        font-weight: 400;
+        color: #fff;
+        margin: 0 auto;
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    .footerCon {
+      flex-direction: column;
+      .footerTop {
+        flex-direction: column;
+        gap: 20px;
+        .title {
+          h1 {
+            margin-top: 0;
+            margin-bottom: 0;
+          }
+        }
+        .links {
+          ul {
+            padding-left: 0;
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .footer {
+    .footerCon {
+      .footerTop {
+        .title {
+          h1 {
+            margin-top: 0;
+            margin-bottom: 0;
+          }
+        }
+        .links {
+          ul {
+            padding-left: 0;
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

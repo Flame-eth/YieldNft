@@ -1,0 +1,135 @@
+.bestSeller {
+  // position: absolute;
+  // height: 650px;
+  background: linear-gradient(90deg, #0c0c0c 100%, rgba(0, 0, 0, 0) 60%);
+  bottom: -610px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 70px 0;
+
+  // border-bottom: solid 1px white;
+
+  .bestSellerCon {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    // margin: 0 auto;
+
+    h3 {
+      color: white;
+      font-size: 40px;
+      // padding: 40px 0;
+      padding-bottom: 60px;
+      margin: 0 auto;
+      text-align: center;
+      font-family: Rubik, sans-serif;
+    }
+
+    .bestSellerCards {
+      width: 90%;
+      gap: 10px;
+      margin: 0 auto;
+      .bestSellerCard {
+        transition: 0.5s;
+        //   padding: 0 20px;
+        // background: red;
+        //   padding: 20px;
+        position: relative;
+        border-radius: 8px;
+        box-shadow: rgb(3 0 71 / 9%) 0px 1px 3px;
+        //   margin: 0 20px;
+        margin-left: 20px;
+        width: 80%;
+
+        &:hover {
+          // background-color: #ffe1e6;
+          cursor: pointer;
+        }
+
+        .img {
+          height: 300px;
+          img {
+            height: 100%;
+            object-fit: contain;
+            width: 90%;
+            // margin: 0 auto;
+          }
+        }
+
+        .text {
+          display: flex;
+          flex-direction: column;
+          width: 90%;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          //   padding: 20px 0;
+          //   background: #0c0c0c;
+          //   border-radius: 0 0 8px 8px;
+          //   position: absolute;
+          //   bottom: 0;
+          //   width: 100%;
+          //   height: 100%;
+          //   opacity: 0;
+          transition: 0.5s;
+          &:hover {
+            opacity: 1;
+          }
+
+          h4 {
+            width: 90%;
+            font-weight: 400;
+            color: white;
+            font-family: Rubik;
+          }
+          span {
+            width: 90%;
+            font-size: 15px;
+            font-weight: 400;
+            color: white;
+            font-family: Rubik;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .bestSeller {
+    .bestSellerCon {
+      h3 {
+        font-size: 25px;
+        width: 80%;
+      }
+
+      .bestSellerCards {
+        width: 80%;
+
+        .bestSellerCard {
+          .img {
+            height: 150px;
+          }
+          .text {
+            font-size: 13px;
+            width: 80%;
+            h4 {
+              width: 90%;
+              font-weight: 300;
+              color: white;
+              font-family: Rubik;
+            }
+            span {
+              width: 90%;
+              font-size: 13px;
+              font-weight: 400;
+              color: white;
+              font-family: Rubik;
+            }
+          }
+        }
+      }
+    }
+  }
+}
