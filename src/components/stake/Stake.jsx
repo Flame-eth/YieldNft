@@ -206,6 +206,8 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
                   dailyEarning: dailyReturn,
                   stakingStatus: true,
                   nextProfitTime: nextProfitTime,
+                  minAmount: minAmount,
+                  maxAmount: maxAmount,
                 }
               )
               .then((res) => {
