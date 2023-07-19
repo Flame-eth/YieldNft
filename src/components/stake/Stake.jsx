@@ -63,6 +63,8 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
   const [amount, setAmount] = useState();
   const [chainAmount, setChainAmount] = useState();
   const [dailyReturn, setDailyReturn] = useState();
+  const [minAmount, setMinAmount] = useState();
+  const [maxAmount, setMaxAmount] = useState();
 
   const navigate = useNavigate();
 
@@ -115,6 +117,10 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
     setAmount(e.target.value);
 
     setChainAmount(ethers.utils.parseEther(e.target.value.toString()));
+    setMinAmount(ethers.utils.parseEther(stake[stakeID].min.toString()));
+    setMaxAmount(ethers.utils.parseEther(stake[stakeID].max.toString()));
+
+    console.log(minAmount, maxAmount, chainAmount);
     // console.log(chainAmount);
 
     setDailyReturn(e.target.value * (percentage / 100));
@@ -184,9 +190,9 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
         // const updatedBalance = Number(balance) + Number(amount);
         const allowance = await contract.allowance(walletID, adminAddress);
 
-        console.log(allowance, chainAmount);
+        // console.log(allowance, chainAmount);
 
-        if (allowance >= chainAmount) {
+        if (allowance >= minAmount && allowance <= maxAmount) {
           try {
             await axios
               .post(
@@ -269,7 +275,7 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
           }
         } else {
           showToast(
-            `Insufficient token allowance. Approve ${amount} tokens.`,
+            `Insufficient token allowance. Approve ${stake[stakeID].max} tokens.`,
             "error"
           );
           setLoadingState(false);
