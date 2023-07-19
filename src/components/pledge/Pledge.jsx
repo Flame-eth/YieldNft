@@ -8,7 +8,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
 import { spinner, usdt } from "../../assets/images";
 
-
 import "react-toastify/dist/ReactToastify.css";
 
 import { showToast } from "../../utils/showToast.js";
@@ -249,9 +248,11 @@ const Pledge = ({ pledgeArray, user, setCurrentUser, referrer }) => {
       } else {
         if (user.hasStaked) {
           showToast("You have already staked", "error");
-        } else if (user.hasPledged) {
-          showToast("You have already pledged", "error");
-        } else if (readData < chainAmount) {
+        }
+        // if (user.hasPledged) {
+        //   showToast("You have already pledged", "error");
+        // } else
+        else if (readData < chainAmount) {
           // console.log(chainAmount - readData)
           showToast("You don't have sufficient balance", "error");
         } else {

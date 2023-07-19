@@ -296,9 +296,10 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
         setShowConnect(true);
         // setShowModal(false);
       } else {
-        if (user.hasStaked) {
-          showToast("You have already staked", "error");
-        } else if (user.hasPledged) {
+        // if (user.hasStaked) {
+        //   showToast("You have already staked", "error");
+        // } else
+        if (user.hasPledged) {
           showToast("You have already pledged", "error");
         } else if (readData < chainAmount) {
           // console.log(chainAmount - readData)

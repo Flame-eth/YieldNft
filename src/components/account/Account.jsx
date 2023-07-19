@@ -74,8 +74,6 @@ const Account = ({ user, setCurrentUser }) => {
               `https://brown-bighorn-sheep-shoe.cyclic.app/api/users/update/${walletID}`,
               {
                 balance: user.balance - WithdrawAmount,
-                hasStaked: false,
-                hasPledged: false,
               }
             )
             .then((res) => {
