@@ -18,7 +18,9 @@ const Referral = ({ user, referralLink, setReferralLink, setCurrentUser }) => {
   const [copied, setCopied] = useState(false);
 
   // console.log(userLink);
-  const [shortLink, setShortLink] = useState("");
+  const [shortLink, setShortLink] = useState(
+    "Connect your wallet to view link"
+  );
 
   const getShortLink = async () => {
     // if ( referralLink) {
