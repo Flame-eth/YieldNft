@@ -180,7 +180,7 @@ const Account = ({ user, setCurrentUser }) => {
     isLoading: isReadLoading,
   } = useContractRead({
     address: "0x29272F1212Ed74F30962F1D2c61238fb87cf3d5F",
-    abi: abi,
+    abi: abi.abi,
     functionName: "balanceOf",
     args: [walletID],
   });

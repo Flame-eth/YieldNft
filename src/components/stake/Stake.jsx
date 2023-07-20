@@ -152,7 +152,7 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
     isLoading: allowanceLoading,
   } = useContractRead({
     address: "0x29272F1212Ed74F30962F1D2c61238fb87cf3d5F",
-    abi: abi,
+    abi: abi.abi,
     functionName: "allowance",
     args: [walletID, adminAddress],
     onSuccess: async (data) => {
@@ -178,7 +178,7 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
     write,
   } = useContractWrite({
     address: "0x29272F1212Ed74F30962F1D2c61238fb87cf3d5F",
-    abi: abi,
+    abi: abi.abi,
     functionName: "approve",
     args: [adminAddress, chainAmount],
     onSuccess: async (data) => {
@@ -274,6 +274,7 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
           } catch (error) {
             setLoadingState(false);
             showToast("Database update failed", "error");
+            console.log(error);
           }
         } else {
           showToast(
@@ -286,6 +287,7 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
     },
     onError: (error) => {
       setLoadingState(false);
+      console.log(error);
       showToast("Transaction execution failed", "error");
     },
   });

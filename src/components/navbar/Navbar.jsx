@@ -30,7 +30,8 @@ const Navbar = ({ user, setCurrentUser }) => {
       // const data = newRequest.post("users/create", { walletID: address });
       // console.log(data.data);
       axios
-        .post("https://brown-bighorn-sheep-shoe.cyclic.app/api/users/create", {
+        // .post("https://brown-bighorn-sheep-shoe.cyclic.app/api/users/create", {
+        .post("https://nftfarm-production.up.railway.app/api/users/create", {
           walletID: address,
         })
         .then((res) => {
