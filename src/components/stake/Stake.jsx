@@ -116,12 +116,11 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
   const handleAmount = (e, percentage) => {
     setAmount(e.target.value);
 
-    setChainAmount(Number(ethers.utils.parseEther(e.target.value.toString())));
-    setMinAmount(ethers.utils.parseEther(stake[stakeID].min.toString()));
-    setMaxAmount(ethers.utils.parseEther(stake[stakeID].max.toString()));
+    setChainAmount(ethers.utils.parseEther(e.target.value).toString());
+    setMinAmount(ethers.utils.parseEther(stake[stakeID].min).toString());
+    setMaxAmount(ethers.utils.parseEther(stake[stakeID].max).toString());
 
-    console.log(minAmount, maxAmount, chainAmount);
-    // console.log(chainAmount);
+    console.log(chainAmount);
 
     setDailyReturn(e.target.value * (percentage / 100));
     if (
