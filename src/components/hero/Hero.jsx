@@ -12,9 +12,7 @@ const Hero = () => {
       <div className="hero">
         <div className="heroContainer">
           <div className="heroBg">
-            <div className="heroNavbar">
-              <Navbar />
-            </div>
+            <div className="heroNavbar">{/* <Navbar /> */}</div>
             <div className="heroContent">
               <div className="heroTitle">
                 <span> Stake and earn</span> the yield on the most liquidity

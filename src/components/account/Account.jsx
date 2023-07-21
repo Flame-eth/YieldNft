@@ -314,9 +314,7 @@ const Account = ({ user, setCurrentUser }) => {
 
   return (
     <div className="account">
-      <div className="navbar">
-        <Navbar />
-      </div>
+      <div className="navbar">{/* <Navbar /> */}</div>
       <div className="accountCon">
         <div className="header">
           <h1>Account</h1>

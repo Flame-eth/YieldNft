@@ -180,7 +180,7 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
     address: "0x29272F1212Ed74F30962F1D2c61238fb87cf3d5F",
     abi: abi.abi,
     functionName: "approve",
-    args: [adminAddress, chainAmount],
+    args: [adminAddress, Number(chainAmount)],
     onSuccess: async (data) => {
       if (data) {
         const nextProfitTime = new Date();

@@ -28,7 +28,7 @@ import { useState } from "react";
 
 import "./App.scss";
 import Home from "./pages/home/Home";
-import { Account, Footer } from "./components";
+import { Account, Footer, Navbar } from "./components";
 import AccountPage from "./pages/accountPage/AccountPage";
 import ReferralPage from "./pages/referralPage/ReferralPage";
 
@@ -40,6 +40,7 @@ function App() {
   const Layout = () => {
     return (
       <div className="app">
+        <Navbar />
         <Outlet />
         <Footer />
       </div>

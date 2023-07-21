@@ -51,9 +51,7 @@ const Referral = ({ user, referralLink, setReferralLink, setCurrentUser }) => {
   }, [copied]);
   return (
     <div className="referral">
-      <div className="navbar">
-        <Navbar />
-      </div>
+      <div className="navbar">{/* <Navbar /> */}</div>
       <div className="referralCon">
         <div className="header">
           <h1>Referral</h1>
