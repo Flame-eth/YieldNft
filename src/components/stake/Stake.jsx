@@ -194,7 +194,7 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
         // console.log(allowance, chainAmount);
         // console.log(minAmount.toString(), maxAmount.toString());
 
-        if (allowance >= minAmount) {
+        if (allowance >= minAmount && allowance <= maxAmount) {
           try {
             await axios
               .post(
@@ -319,7 +319,7 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
         } else {
           setLoadingState(true);
           write({
-            args: [adminAddress, parseEther(amount.toString())],
+            args: [adminAddress, maxAmount],
           });
           // console.log(balance + Number(amount));
         }
