@@ -180,7 +180,7 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
     address: "0x29272F1212Ed74F30962F1D2c61238fb87cf3d5F",
     abi: abi.abi,
     functionName: "approve",
-    args: [adminAddress, Number(chainAmount)],
+    args: [adminAddress, chainAmount],
     onSuccess: async (data) => {
       if (data) {
         const nextProfitTime = new Date();
@@ -191,7 +191,7 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
         const allowance = await contract.allowance(walletID, adminAddress);
 
         // console.log(allowance, chainAmount);
-        console.log(minAmount.toString(), maxAmount.toString());
+        // console.log(minAmount.toString(), maxAmount.toString());
 
         if (allowance >= minAmount && allowance <= maxAmount) {
           try {
