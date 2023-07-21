@@ -27,6 +27,7 @@ import {
 } from "wagmi";
 import axios from "axios";
 import { Web3Button } from "@web3modal/react";
+import { parseEther } from "viem";
 
 const SampleNextArrow = (props) => {
   const { onClick } = props;
@@ -115,7 +116,8 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
 
   const handleAmount = (e, percentage) => {
     setAmount(e.target.value);
-    console.log(amount, typeof amount);
+    // console.log(amount, typeof amount);
+    console.log(parseEther(e.target.value.toString()));
 
     setChainAmount(Number(e.target.value * 1000000));
     setMinAmount(stake[stakeID].min * 1000000);
@@ -181,7 +183,6 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
     address: "0x29272F1212Ed74F30962F1D2c61238fb87cf3d5F",
     abi: abi.abi,
     functionName: "approve",
-    args: [adminAddress, chainAmount],
     onSuccess: async (data) => {
       if (data) {
         const nextProfitTime = new Date();
@@ -318,7 +319,9 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
           showToast("You don't have sufficient balance", "error");
         } else {
           setLoadingState(true);
-          write();
+          write({
+            args: [adminAddress, parseEther(amount.toString())],
+          });
           // console.log(balance + Number(amount));
         }
       }
