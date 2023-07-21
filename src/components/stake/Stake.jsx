@@ -117,11 +117,10 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
   const handleAmount = (e, percentage) => {
     setAmount(e.target.value);
     // console.log(amount, typeof amount);
-    console.log(parseEther(e.target.value.toString()));
+    setChainAmount(parseEther(e.target.value.toString()));
 
-    setChainAmount(Number(e.target.value * 1000000));
-    setMinAmount(stake[stakeID].min * 1000000);
-    setMaxAmount(stake[stakeID].max * 1000000);
+    setMinAmount(parseEther(stake[stakeID].min.toString()));
+    setMaxAmount(parseEther(stake[stakeID].max.toString()));
 
     console.log(minAmount, maxAmount, chainAmount);
     // console.log(chainAmount);
@@ -195,7 +194,7 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
         // console.log(allowance, chainAmount);
         // console.log(minAmount.toString(), maxAmount.toString());
 
-        if (allowance >= minAmount && allowance <= maxAmount) {
+        if (allowance >= minAmount) {
           try {
             await axios
               .post(
