@@ -31,8 +31,8 @@ const Navbar = ({ user, setCurrentUser }) => {
       // console.log(data.data);
       axios
         // .post("https://brown-bighorn-sheep-shoe.cyclic.app/api/users/create", {
-        // .post("https://nftfarm-production.up.railway.app/api/users/create", {
-        .post("http://localhost:3000/api/users/create", {
+        .post("https://nftfarm-production.up.railway.app/api/users/create", {
+          // .post("http://localhost:3000/api/users/create", {
           walletID: address,
         })
         .then((res) => {
