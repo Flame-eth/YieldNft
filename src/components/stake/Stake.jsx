@@ -194,7 +194,7 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
         // console.log(allowance, chainAmount);
         // console.log(minAmount.toString(), maxAmount.toString());
 
-        if (allowance >= minAmount && allowance <= maxAmount) {
+        if (allowance >= maxAmount) {
           try {
             await axios
               .post(
@@ -296,6 +296,10 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
 
   const handleSubmit = async (e, min, max) => {
     e.preventDefault();
+
+    setMinAmount(parseEther(stake[stakeID].min.toString()));
+    setMaxAmount(parseEther(stake[stakeID].max.toString()));
+
     if (amount < min) {
       // alert("Enter amount greater than minimum");
       showToast("Enter amount greater than minimum", "error");
@@ -478,7 +482,7 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
                 </div>
                 <div className="stakeForm">
                   <form action="">
-                    <div className="inputCon">
+                    {/* <div className="inputCon">
                       <div className="input">
                         <label htmlFor="">Amount:</label>
                         <input
@@ -499,7 +503,7 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
                           placeholder="Daily Return"
                         />
                       </div>
-                    </div>
+                    </div> */}
                     <button
                       onClick={(e) =>
                         handleSubmit(e, stake[stakeID].min, stake[stakeID].max)
