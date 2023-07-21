@@ -115,10 +115,11 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
 
   const handleAmount = (e, percentage) => {
     setAmount(e.target.value);
+    console.log(amount, typeof amount);
 
-    setChainAmount(Number(e.target.value.toString * 1000000));
-    setMinAmount(stake[stakeID].min * 1000000).toString();
-    setMaxAmount(stake[stakeID].max * 1000000).toString();
+    setChainAmount(Number(e.target.value * 1000000));
+    setMinAmount(stake[stakeID].min * 1000000);
+    setMaxAmount(stake[stakeID].max * 1000000);
 
     console.log(minAmount, maxAmount, chainAmount);
     // console.log(chainAmount);
