@@ -4,11 +4,11 @@ const AboutUs = () => {
   return (
     <div className="about">
       <div className="aboutContainer">
-        <h1>ABOUT YieldNFT</h1>
+        <h1>ABOUT NFTsYield</h1>
         <p>
-          Welcome to YieldNFT, your premier decentralized finance (DeFi)
+          Welcome to NFTsYield, your premier decentralized finance (DeFi)
           platform that combines staking, yield farming, and the exciting world
-          of non-fungible tokens (NFTs). At YieldNFT, we offer a unique
+          of non-fungible tokens (NFTs). At NFTsYield, we offer a unique
           opportunity for users to stake or pledge their USDT and earn a
           stipulated reward percentage by leveraging the potential of NFTs. Our
           platform is designed to provide a seamless and user-friendly
@@ -18,7 +18,7 @@ const AboutUs = () => {
           everyone, regardless of their background or expertise.
         </p>
         {/* <p>
-          Join YieldNFT today and unlock the potential of DeFi staking and yield
+          Join NFTsYield today and unlock the potential of DeFi staking and yield
           farming with NFTs. Whether you are a seasoned investor or a curious
           newcomer, we invite you to embark on a rewarding journey with us.
           Start earning attractive rewards on your USDT without the need to own

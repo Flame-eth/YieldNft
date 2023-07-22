@@ -85,7 +85,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="footerBottom">
-          <h1>© 2021 YieldNFT. All rights reserved.</h1>
+          <h1>© 2021 NFTsYield. All rights reserved.</h1>
         </div>
       </div>
     </div>
