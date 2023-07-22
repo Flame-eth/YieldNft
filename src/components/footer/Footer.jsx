@@ -19,7 +19,7 @@ const Footer = () => {
             <h1>
               <img src={logo} alt="" />
               <Link className="navLink" to="/">
-                YieldNFT
+                NFTsYield
               </Link>
             </h1>
             <div className="desc">

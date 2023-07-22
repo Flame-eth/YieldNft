@@ -50,7 +50,7 @@ const Navbar = ({ user, setCurrentUser }) => {
             <img src={logo} alt="" />
             <h1>
               <div className="navLink" to="/">
-                YieldNFT
+                NFTsYield
               </div>
             </h1>
           </Link>
@@ -101,7 +101,12 @@ const Navbar = ({ user, setCurrentUser }) => {
           <ul>
             <Web3Button icon="hide" label="Connect Wallet" balance="show" />
             <li>
-              <Link className="sideLink" to="/">
+              <Link
+                className="sideLink"
+                to="/"
+                onClick={() => {
+                  setSidebar(!sidebar);
+                }}>
                 Home
               </Link>
             </li>
@@ -111,12 +116,22 @@ const Navbar = ({ user, setCurrentUser }) => {
               </Link>
             </li> */}
             <li>
-              <Link className="sideLink" to="/account">
+              <Link
+                className="sideLink"
+                to="/account"
+                onClick={() => {
+                  setSidebar(!sidebar);
+                }}>
                 Account
               </Link>
             </li>
             <li>
-              <Link className="sideLink" to="/referral">
+              <Link
+                className="sideLink"
+                to="/referral"
+                onClick={() => {
+                  setSidebar(!sidebar);
+                }}>
                 Referral
               </Link>
             </li>
