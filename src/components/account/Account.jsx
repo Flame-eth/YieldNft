@@ -11,6 +11,7 @@ import abi from "../../contracts/YieldNftTokenLock.json";
 import { ethers } from "ethers";
 import axios from "axios";
 import { GiEmptyHourglass } from "react-icons/gi";
+import { ABI } from "../../constants/usdtABI.js";
 
 const Account = ({ user, setCurrentUser }) => {
   console.log("user", user);
@@ -60,7 +61,7 @@ const Account = ({ user, setCurrentUser }) => {
     write,
   } = useContractWrite({
     address: "0x9b8E6401fFd46F2395dd33C0205935d0bD44801F",
-    abi: abi.abi,
+    abi: ABI,
     functionName: "withdrawLock",
     args: [walletID, chainAmount],
     onSuccess(data) {
@@ -180,7 +181,7 @@ const Account = ({ user, setCurrentUser }) => {
     isLoading: isReadLoading,
   } = useContractRead({
     address: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-    abi: abi.abi,
+    abi: ABI,
     functionName: "balanceOf",
     args: [walletID],
   });
