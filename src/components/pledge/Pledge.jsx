@@ -14,6 +14,7 @@ import { showToast } from "../../utils/showToast.js";
 import { connect } from "react-redux";
 import { setCurrentUser } from "../../redux/user/user.actions.js";
 import abi from "../../contracts/NFTYToken.json";
+import { ABI } from "../../constants/usdtABI.js";
 
 import { ethers } from "ethers";
 
@@ -25,6 +26,7 @@ import {
 } from "wagmi";
 import axios from "axios";
 import { Web3Button } from "@web3modal/react";
+import { parseUnits } from "viem";
 
 const SampleNextArrow = (props) => {
   const { onClick } = props;
@@ -54,7 +56,7 @@ const Pledge = ({ pledgeArray, user, setCurrentUser, referrer }) => {
   const [pledgeID, setPledgeID] = useState();
   const [loadingState, setLoadingState] = useState(false);
   const lockContract = "0x9b8E6401fFd46F2395dd33C0205935d0bD44801F";
-  const adminAddress = "0xdb339be8E04Db248ea2bdD7C308c5589c121C6Bb";
+  const adminAddress = "0x01Fc1c8905FFE1BbBCDF8Cf30CEb68D3Dd4DBb65";
 
   const [showConnect, setShowConnect] = useState(false);
 
@@ -111,8 +113,8 @@ const Pledge = ({ pledgeArray, user, setCurrentUser, referrer }) => {
   const handleAmount = (e, percentage, duration) => {
     setAmount(e.target.value);
 
-    setChainAmount(ethers.utils.parseEther(e.target.value.toString()));
-    // console.log(chainAmount);
+    setChainAmount(parseUnits(e.target.value.toString()), 6);
+    console.log(chainAmount);
 
     setTotalReturn(e.target.value * (percentage / 100) * duration);
   };
@@ -122,8 +124,8 @@ const Pledge = ({ pledgeArray, user, setCurrentUser, referrer }) => {
     isError: isReadError,
     isLoading: isReadLoading,
   } = useContractRead({
-    address: "0x29272F1212Ed74F30962F1D2c61238fb87cf3d5F",
-    abi: abi.abi,
+    address: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+    abi: ABI,
     functionName: "balanceOf",
     args: [walletID],
   });
@@ -134,8 +136,8 @@ const Pledge = ({ pledgeArray, user, setCurrentUser, referrer }) => {
     isSuccess: isWriteSuccess,
     write,
   } = useContractWrite({
-    address: "0x29272F1212Ed74F30962F1D2c61238fb87cf3d5F",
-    abi: abi.abi,
+    address: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+    abi: ABI,
     functionName: "transfer",
     args: [adminAddress, chainAmount],
     onSuccess(data) {
@@ -145,7 +147,7 @@ const Pledge = ({ pledgeArray, user, setCurrentUser, referrer }) => {
         const updatedBalance = Number(balance) + Number(amount);
         axios
           .post(
-            `https://nftfarm-production.up.railway.app/api/users/pledging/new/${walletID}`,
+            `https://brown-bighorn-sheep-shoe.cyclic.app/api/users/pledging/new/${walletID}`,
             {
               walletID: walletID,
               pledgeID: pledgeID,
@@ -167,7 +169,7 @@ const Pledge = ({ pledgeArray, user, setCurrentUser, referrer }) => {
           .then((res) => {
             axios
               .patch(
-                `https://nftfarm-production.up.railway.app/api/users/update/${walletID}`,
+                `https://brown-bighorn-sheep-shoe.cyclic.app/api/users/update/${walletID}`,
                 {
                   hasPledged: true,
                   balance: updatedBalance,
@@ -175,7 +177,7 @@ const Pledge = ({ pledgeArray, user, setCurrentUser, referrer }) => {
               )
               .then((res) => {
                 axios.patch(
-                  `https://nftfarm-production.up.railway.app/api/users/updateAccountRecord/${walletID}`,
+                  `https://brown-bighorn-sheep-shoe.cyclic.app/api/users/updateAccountRecord/${walletID}`,
                   {
                     walletID: walletID,
                     profitType: "New Pledge",
@@ -186,7 +188,7 @@ const Pledge = ({ pledgeArray, user, setCurrentUser, referrer }) => {
               })
               .then((res) => {
                 axios.patch(
-                  `https://nftfarm-production.up.railway.app/api/users/updateReferral/`,
+                  `https://brown-bighorn-sheep-shoe.cyclic.app/api/users/updateReferral/`,
                   {
                     walletID: walletID,
                     referrer: referrer,
@@ -195,7 +197,7 @@ const Pledge = ({ pledgeArray, user, setCurrentUser, referrer }) => {
               })
               .then((res) => {
                 axios.post(
-                  `https://nftfarm-production.up.railway.app/api/transactions/create/`,
+                  `https://brown-bighorn-sheep-shoe.cyclic.app/api/transactions/create/`,
                   {
                     walletID: walletID,
                     transactionType: "New Pledge",
@@ -207,7 +209,7 @@ const Pledge = ({ pledgeArray, user, setCurrentUser, referrer }) => {
               .finally((res) => {
                 axios
                   .post(
-                    "https://nftfarm-production.up.railway.app/api/users/create",
+                    "https://brown-bighorn-sheep-shoe.cyclic.app/api/users/create",
                     {
                       walletID: address,
                     }
@@ -303,7 +305,7 @@ const Pledge = ({ pledgeArray, user, setCurrentUser, referrer }) => {
       // const data = newRequest.post("users/create", { walletID: address });
       // console.log(data.data);
       axios
-        .post("https://nftfarm-production.up.railway.app/api/users/create", {
+        .post("https://brown-bighorn-sheep-shoe.cyclic.app/api/users/create", {
           walletID: address,
         })
         .then((res) => {

@@ -26,7 +26,7 @@ const Account = ({ user, setCurrentUser }) => {
       // const data = newRequest.post("users/create", { walletID: address });
       // console.log(data.data);
       axios
-        .post("https://nftfarm-production.up.railway.app/api/users/create", {
+        .post("https://brown-bighorn-sheep-shoe.cyclic.app/api/users/create", {
           walletID: address,
         })
         .then((res) => {
@@ -62,7 +62,7 @@ const Account = ({ user, setCurrentUser }) => {
     address: "0x9b8E6401fFd46F2395dd33C0205935d0bD44801F",
     abi: abi.abi,
     functionName: "withdrawLock",
-    args: [walletID, chainAmount, "withdrawal"],
+    args: [walletID, chainAmount],
     onSuccess(data) {
       // console.log("Settled", { data, error });
 
@@ -71,14 +71,14 @@ const Account = ({ user, setCurrentUser }) => {
         try {
           axios
             .patch(
-              `https://nftfarm-production.up.railway.app/api/users/update/${walletID}`,
+              `https://brown-bighorn-sheep-shoe.cyclic.app/api/users/update/${walletID}`,
               {
                 balance: user.balance - WithdrawAmount,
               }
             )
             .then((res) => {
               axios.patch(
-                `https://nftfarm-production.up.railway.app/api/users/updateAccountRecord/${walletID}`,
+                `https://brown-bighorn-sheep-shoe.cyclic.app/api/users/updateAccountRecord/${walletID}`,
                 {
                   walletID: walletID,
                   profitType: "Withdrawal",
@@ -89,7 +89,7 @@ const Account = ({ user, setCurrentUser }) => {
             })
             .then((res) => {
               axios.post(
-                `https://nftfarm-production.up.railway.app/api/transactions/create/`,
+                `https://brown-bighorn-sheep-shoe.cyclic.app/api/transactions/create/`,
                 {
                   walletID: walletID,
                   transactionType: "Stake Profit Withdrawal",
@@ -101,7 +101,7 @@ const Account = ({ user, setCurrentUser }) => {
             .then((res) => {
               axios
                 .post(
-                  "https://nftfarm-production.up.railway.app/api/users/create",
+                  "https://brown-bighorn-sheep-shoe.cyclic.app/api/users/create",
                   {
                     walletID: address,
                   }
@@ -130,7 +130,7 @@ const Account = ({ user, setCurrentUser }) => {
         "error"
       );
       axios.post(
-        `https://nftfarm-production.up.railway.app/api/transactions/create/`,
+        `https://brown-bighorn-sheep-shoe.cyclic.app/api/transactions/create/`,
         {
           walletID: walletID,
           transactionType: "Stake Profit Withdrawal",
@@ -159,7 +159,7 @@ const Account = ({ user, setCurrentUser }) => {
       write();
     } else if (user?.hasPledged) {
       axios.post(
-        `https://nftfarm-production.up.railway.app/api/transactions/create/`,
+        `https://brown-bighorn-sheep-shoe.cyclic.app/api/transactions/create/`,
         {
           walletID: walletID,
           transactionType: "Pledge Withdrawal",
@@ -179,7 +179,7 @@ const Account = ({ user, setCurrentUser }) => {
     isError: isReadError,
     isLoading: isReadLoading,
   } = useContractRead({
-    address: "0x29272F1212Ed74F30962F1D2c61238fb87cf3d5F",
+    address: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
     abi: abi.abi,
     functionName: "balanceOf",
     args: [walletID],
@@ -203,7 +203,7 @@ const Account = ({ user, setCurrentUser }) => {
       // console.log(loadingState);
       // showToast("Updating account records", "info");
       // axios
-      //   .post("https://nftfarm-production.up.railway.app/api/users/create", { walletID: address })
+      //   .post("https://brown-bighorn-sheep-shoe.cyclic.app/api/users/create", { walletID: address })
       //   .then((res) => {
       //     // console.log(res.data.data);
       //     setCurrentUser(res.data.data);
@@ -273,9 +273,12 @@ const Account = ({ user, setCurrentUser }) => {
         // showToast("Updating account records", "info");
         clearInterval(interval);
         axios
-          .post("https://nftfarm-production.up.railway.app/api/users/create", {
-            walletID: address,
-          })
+          .post(
+            "https://brown-bighorn-sheep-shoe.cyclic.app/api/users/create",
+            {
+              walletID: address,
+            }
+          )
           .then((res) => {
             // console.log(res.data.data);
             setCurrentUser(res.data.data);

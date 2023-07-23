@@ -37,7 +37,7 @@ import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { arbitrum, celoAlfajores, mainnet, polygon } from "wagmi/chains";
 
 // const chains = [arbitrum, mainnet, polygon, celoAlfajores];
-const chains = [celoAlfajores];
+const chains = [mainnet];
 
 const projectId = "2d4b2b6ec24103bfa7cba5ecb1368e4e";
 

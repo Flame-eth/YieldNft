@@ -27,11 +27,11 @@ const Referral = ({ user, referralLink, setReferralLink, setCurrentUser }) => {
     //   setShortLink(referralLink);
     // } else
     if (user) {
-      const userLink = `https://yield-nft.vercel.app/${user?.walletID}`;
+      const userLink = `https://nftsyield.com/${user?.walletID}`;
       axios
         .get(`https://api.shrtco.de/v2/shorten?url=${userLink}`)
         .then((res) => {
-          console.log(res.data.result.full_short_link);
+          // console.log(res.data.result.full_short_link);
           setShortLink(res.data.result.full_short_link);
           setReferralLink(res.data.result.full_short_link);
         })

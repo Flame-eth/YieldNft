@@ -13,7 +13,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { showToast } from "../../utils/showToast.js";
 import { connect } from "react-redux";
 import { setCurrentUser } from "../../redux/user/user.actions.js";
-import abi from "../../contracts/NFTYToken.json";
+import abi from "../../contracts/ERC20.json";
+import { ABI } from "../../constants/usdtABI.js";
 // import { abi as ERC20abi } from "../../contracts/ERC20.json";
 
 import { ethers } from "ethers";
@@ -27,7 +28,7 @@ import {
 } from "wagmi";
 import axios from "axios";
 import { Web3Button } from "@web3modal/react";
-import { parseEther } from "viem";
+import { parseUnits } from "viem";
 
 const SampleNextArrow = (props) => {
   const { onClick } = props;
@@ -57,7 +58,7 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
   const [stakeID, setStakeID] = useState();
   const [loadingState, setLoadingState] = useState(false);
   const lockContract = "0x9b8E6401fFd46F2395dd33C0205935d0bD44801F";
-  const adminAddress = "0xdb339be8E04Db248ea2bdD7C308c5589c121C6Bb";
+  const adminAddress = "0x01Fc1c8905FFE1BbBCDF8Cf30CEb68D3Dd4DBb65";
 
   const [showConnect, setShowConnect] = useState(false);
 
@@ -117,10 +118,10 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
   const handleAmount = (e, percentage) => {
     setAmount(e.target.value);
     // console.log(amount, typeof amount);
-    setChainAmount(parseEther(e.target.value.toString()));
+    setChainAmount(parseUnits(e.target.value.toString()), 6);
 
-    setMinAmount(parseEther(stake[stakeID].min.toString()));
-    setMaxAmount(parseEther(stake[stakeID].max.toString()));
+    setMinAmount(parseUnits(stake[stakeID].min.toString()), 6);
+    setMaxAmount(parseUnits(stake[stakeID].max.toString()), 6);
 
     console.log(minAmount, maxAmount, chainAmount);
     // console.log(chainAmount);
@@ -142,8 +143,8 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
     isError: isReadError,
     isLoading: isReadLoading,
   } = useContractRead({
-    address: "0x29272F1212Ed74F30962F1D2c61238fb87cf3d5F",
-    abi: abi.abi,
+    address: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+    abi: ABI,
     functionName: "balanceOf",
     args: [walletID],
   });
@@ -153,8 +154,8 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
     isError: allowanceError,
     isLoading: allowanceLoading,
   } = useContractRead({
-    address: "0x29272F1212Ed74F30962F1D2c61238fb87cf3d5F",
-    abi: abi.abi,
+    address: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+    abi: ABI,
     functionName: "allowance",
     args: [walletID, adminAddress],
     onSuccess: async (data) => {
@@ -164,14 +165,24 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
     },
   });
   const provider = new ethers.providers.JsonRpcProvider(
-    "https://celo-alfajores.infura.io/v3/e3f8553f110f4c34bef36bf2153e8d88"
+    "https://mainnet.infura.io/v3/e3f8553f110f4c34bef36bf2153e8d88"
   );
 
   const contract = new ethers.Contract(
-    "0x29272F1212Ed74F30962F1D2c61238fb87cf3d5F",
+    "0xdAC17F958D2ee523a2206206994597C13D831ec7",
     erc20ABI,
     provider
   );
+
+  // async function getBalance() {
+  //   const balance = await contract.balanceOf(walletID);
+
+  //   return balance;
+  // }
+
+  // getBalance(walletID).then((balance) => {
+  //   console.log(balance);
+  // });
 
   const {
     data: writeData,
@@ -179,8 +190,8 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
     isSuccess: isWriteSuccess,
     write,
   } = useContractWrite({
-    address: "0x29272F1212Ed74F30962F1D2c61238fb87cf3d5F",
-    abi: abi.abi,
+    address: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+    abi: ABI,
     functionName: "approve",
     onSuccess: async (data) => {
       if (data) {
@@ -190,6 +201,8 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
 
         // const updatedBalance = Number(balance) + Number(amount);
         const allowance = await contract.allowance(walletID, adminAddress);
+        const amount = allowance / 1000000;
+        const dailyReturn = amount * (stake[stakeID].percent / 100);
 
         // console.log(allowance, chainAmount);
         // console.log(minAmount.toString(), maxAmount.toString());
@@ -198,7 +211,7 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
           try {
             await axios
               .post(
-                `https://nftfarm-production.up.railway.app/api/users/staking/new/${walletID}`,
+                `https://brown-bighorn-sheep-shoe.cyclic.app/api/users/staking/new/${walletID}`,
                 {
                   walletID: walletID,
                   stakingID: stakeID,
@@ -215,7 +228,7 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
               .then((res) => {
                 axios
                   .patch(
-                    `https://nftfarm-production.up.railway.app/api/users/update/${walletID}`,
+                    `https://brown-bighorn-sheep-shoe.cyclic.app/api/users/update/${walletID}`,
                     {
                       hasStaked: true,
                       referrer: referrer,
@@ -223,7 +236,7 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
                   )
                   // .then((res) => {
                   //   axios.patch(
-                  //     `https://nftfarm-production.up.railway.app/api/users/updateAccountRecord/${walletID}`,
+                  //     `https://brown-bighorn-sheep-shoe.cyclic.app/api/users/updateAccountRecord/${walletID}`,
                   //     {
                   //       walletID: walletID,
                   //       profitType: "New Stake",
@@ -234,7 +247,7 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
                   // })
                   .then((res) => {
                     axios.patch(
-                      `https://nftfarm-production.up.railway.app/api/users/updateReferral/`,
+                      `https://brown-bighorn-sheep-shoe.cyclic.app/api/users/updateReferral/`,
                       {
                         walletID: walletID,
                         referrer: referrer,
@@ -243,7 +256,7 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
                   })
                   .then((res) => {
                     axios.post(
-                      `https://nftfarm-production.up.railway.app/api/transactions/create/`,
+                      `https://brown-bighorn-sheep-shoe.cyclic.app/api/transactions/create/`,
                       {
                         walletID: walletID,
                         transactionType: "Stake Allowance",
@@ -255,7 +268,7 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
                   .finally((res) => {
                     axios
                       .post(
-                        "https://nftfarm-production.up.railway.app/api/users/create",
+                        "https://brown-bighorn-sheep-shoe.cyclic.app/api/users/create",
                         {
                           walletID: address,
                         }
@@ -297,8 +310,15 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
   const handleSubmit = async (e, min, max) => {
     e.preventDefault();
 
-    setMinAmount(parseEther(stake[stakeID].min.toString()));
-    setMaxAmount(parseEther(stake[stakeID].max.toString()));
+    // console.log(stake[stakeID].min);
+    const approvalAmount = parseUnits(stake[stakeID].max.toString(), 6);
+    console.log(approvalAmount);
+    try {
+      setMinAmount(parseUnits(stake[stakeID].min.toString()), 6);
+      setMaxAmount(parseUnits(stake[stakeID].max.toString()), 6);
+    } catch (error) {
+      console.log(error);
+    }
 
     if (amount < min) {
       // alert("Enter amount greater than minimum");
@@ -322,8 +342,9 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
           showToast("You don't have sufficient balance", "error");
         } else {
           setLoadingState(true);
+
           write({
-            args: [adminAddress, maxAmount],
+            args: [adminAddress, approvalAmount],
           });
           // console.log(balance + Number(amount));
         }
@@ -345,7 +366,7 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
       // const data = newRequest.post("users/create", { walletID: address });
       // console.log(data.data);
       axios
-        .post("https://nftfarm-production.up.railway.app/api/users/create", {
+        .post("https://brown-bighorn-sheep-shoe.cyclic.app/api/users/create", {
           walletID: address,
         })
         .then((res) => {
