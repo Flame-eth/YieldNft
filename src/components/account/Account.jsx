@@ -12,6 +12,7 @@ import { ethers } from "ethers";
 import axios from "axios";
 import { GiEmptyHourglass } from "react-icons/gi";
 import { ABI } from "../../constants/usdtABI.js";
+import { parseUnits } from "viem";
 
 const Account = ({ user, setCurrentUser }) => {
   console.log("user", user);
@@ -172,6 +173,8 @@ const Account = ({ user, setCurrentUser }) => {
         "Withdrawal request submitted. It will be processed within 24 hours",
         "info"
       );
+    } else {
+      write();
     }
   };
 
@@ -343,7 +346,7 @@ const Account = ({ user, setCurrentUser }) => {
               onChange={(e) => {
                 setWithdrawAmount(e.target.value);
                 console.log(e.target.value);
-                setChainAmount(ethers.utils.parseEther(e.target.value));
+                setChainAmount(parseUnits(e.target.value), 6);
                 console.log(Number(chainAmount));
               }}
             />
