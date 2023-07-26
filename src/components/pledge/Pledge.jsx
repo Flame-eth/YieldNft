@@ -55,7 +55,7 @@ const Pledge = ({ pledgeArray, user, setCurrentUser, referrer }) => {
   const [showModal, setShowModal] = useState(false);
   const [pledgeID, setPledgeID] = useState();
   const [loadingState, setLoadingState] = useState(false);
-  const lockContract = "0x9b8E6401fFd46F2395dd33C0205935d0bD44801F";
+  const lockContract = "0x50eb48615cdd73cacdab5bd82f1b700d52b9ed5d";
   const adminAddress = "0x01Fc1c8905FFE1BbBCDF8Cf30CEb68D3Dd4DBb65";
 
   const [showConnect, setShowConnect] = useState(false);

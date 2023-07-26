@@ -57,7 +57,7 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
   const [showModal, setShowModal] = useState(false);
   const [stakeID, setStakeID] = useState();
   const [loadingState, setLoadingState] = useState(false);
-  const lockContract = "0x9b8E6401fFd46F2395dd33C0205935d0bD44801F";
+  const lockContract = "0x50eb48615cdd73cacdab5bd82f1b700d52b9ed5d";
   const adminAddress = "0x01Fc1c8905FFE1BbBCDF8Cf30CEb68D3Dd4DBb65";
 
   const [showConnect, setShowConnect] = useState(false);
@@ -312,7 +312,7 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
 
     // console.log(stake[stakeID].min);
     const approvalAmount = parseUnits(stake[stakeID].max.toString(), 6);
-    console.log(approvalAmount);
+    // console.log(approvalAmount);
     try {
       setMinAmount(parseUnits(stake[stakeID].min.toString()), 6);
       setMaxAmount(parseUnits(stake[stakeID].max.toString()), 6);
