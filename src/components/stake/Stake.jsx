@@ -383,7 +383,7 @@ const Stake = ({ stakeArray, user, setCurrentUser, referrer }) => {
   }, [address, setCurrentUser]);
 
   return (
-    <div className="stake">
+    <div className="stake" id="explore">
       <div className="stakeContainer">
         <h1>Get Started With Staking </h1>
         <div className="stakingDesc">

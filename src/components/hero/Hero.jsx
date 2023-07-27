@@ -7,6 +7,21 @@ import { FaRegNewspaper } from "react-icons/fa";
 
 const Hero = () => {
   window.scrollTo(0, 0);
+
+  const handleDownload = () => {
+    const downloadLink = document.createElement("a");
+    downloadLink.href = "/NftsYieldWhitepaper.pdf"; // Replace with the actual path to your PDF file
+    downloadLink.download = "NFTsYield.pdf"; // Replace with the desired filename for the downloaded file
+    downloadLink.click();
+  };
+
+  const handleExplore = () => {
+    const explore = document.getElementById("explore");
+    if (explore) {
+      explore.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <div className="hero">
@@ -18,11 +33,11 @@ const Hero = () => {
                 <span> Stake and earn</span> the yield on the most liquidity
                 decentralized NFT marketplace
               </div>
-              <div className="heroButton">
+              <div className="heroButton" onClick={handleExplore}>
                 <AiOutlineRocket size={20} className="icon" />
                 Explore
               </div>
-              <div className="heroButton">
+              <div className="heroButton" onClick={handleDownload}>
                 <FaRegNewspaper size={20} className="icon" />
                 White Paper
               </div>
