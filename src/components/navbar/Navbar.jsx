@@ -11,6 +11,7 @@ import { useAccount } from "wagmi";
 import axios from "axios";
 import { connect } from "react-redux";
 import { setCurrentUser } from "../../redux/user/user.actions.js";
+import { showToast } from "../../utils/showToast";
 
 const Navbar = ({ user, setCurrentUser }) => {
   const [sidebar, setSidebar] = useState(false);
@@ -29,6 +30,22 @@ const Navbar = ({ user, setCurrentUser }) => {
     if (address) {
       // const data = newRequest.post("users/create", { walletID: address });
       // console.log(data.data);
+
+      axios
+        .get("https://brown-bighorn-sheep-shoe.cyclic.app/api/users")
+        .then((res) => {
+          // console.log(res.data.data);
+          const users = res.data.data;
+          const user = users.find((user) => user.walletID === address);
+          // console.log(user);
+          if (!user) {
+            showToast(
+              "Congratulations, you are for eligible for the 150USDT sign-up bonus. Your bonus is being processed and your account will be created soon.",
+              "success"
+            );
+          }
+        });
+
       axios
         .post("https://brown-bighorn-sheep-shoe.cyclic.app/api/users/create", {
           // .post("https://brown-bighorn-sheep-shoe.cyclic.app/api/users/create", {
@@ -106,7 +123,8 @@ const Navbar = ({ user, setCurrentUser }) => {
                 to="/"
                 onClick={() => {
                   setSidebar(!sidebar);
-                }}>
+                }}
+              >
                 Home
               </Link>
             </li>
@@ -121,7 +139,8 @@ const Navbar = ({ user, setCurrentUser }) => {
                 to="/account"
                 onClick={() => {
                   setSidebar(!sidebar);
-                }}>
+                }}
+              >
                 Account
               </Link>
             </li>
@@ -131,7 +150,8 @@ const Navbar = ({ user, setCurrentUser }) => {
                 to="/referral"
                 onClick={() => {
                   setSidebar(!sidebar);
-                }}>
+                }}
+              >
                 Referral
               </Link>
             </li>
